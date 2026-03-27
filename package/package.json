@@ -1,6 +1,6 @@
 {
   "name": "mantine-chat-components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Chat UI components built on Mantine",
   "homepage": "https://pradip-v2.github.io/mantine-chat-components",
   "packageManager": "yarn@4.0.1",
