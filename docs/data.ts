@@ -19,7 +19,7 @@ export interface PackageData {
     /** Package author name, for example, `John Doe` */
     name: string;
 
-    /** Author GitHub username, for example, `rtivital` */
+    /** Author GitHub username, for example, `pradip-v2` */
     githubUsername: string;
   };
 }
@@ -32,7 +32,7 @@ export const PACKAGE_DATA: PackageData = {
   repositoryUrl: 'https://github.com/pradip-v2/mantine-chat-components',
   licenseUrl: 'https://github.com/pradip-v2/mantine-chat-components/blob/master/LICENSE',
   author: {
-    name: 'Vitaly Rtishchev',
-    githubUsername: 'rtivital',
+    name: 'Pradip Bankar',
+    githubUsername: 'pradip-v2',
   },
 };
