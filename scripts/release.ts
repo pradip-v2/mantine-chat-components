@@ -82,10 +82,19 @@ async function release() {
 
   const revertVersion = await updateVersion(nextVersion);
 
+  const distTag = versionStage ? 'next' : 'latest';
+  const otp = process.env.NPM_OTP;
+  const publish =
+    otp !== undefined && otp !== ''
+      ? $`cd ./package && npm publish --access public --tag ${distTag} --otp=${otp}`
+      : $`cd ./package && npm publish --access public --tag ${distTag}`;
+
   await run(
-    $`cd ./package && npm publish --access public --tag ${versionStage ? 'next' : 'latest'}`,
+    publish,
     {
-      info: 'Publishing the package to npm',
+      info: otp
+        ? 'Publishing the package to npm (using NPM_OTP from environment)'
+        : 'Publishing the package to npm (set NPM_OTP if your account requires 2FA)',
       success: 'The package has been published to npm',
       error: 'Failed to publish the package to npm',
     },
