@@ -1,0 +1,31 @@
+import { InstallScript } from './components/InstallScript/InstallScript';
+import * as demos from './demos';
+
+## Installation
+
+<InstallScript packages="mantine-chat-components" />
+
+Import styles once in your app root (e.g. `_app.tsx` or root layout):
+
+```tsx
+import 'mantine-chat-components/styles.css';
+```
+
+## Interactive chat
+
+Compose **Chat** (container), **ChatMessages** (scrollable list), **ChatMessage** (bubbles), and **ChatInput** (textarea + send). The demo below keeps message state in React; wire `onSubmit` to your API or streaming layer.
+
+<Demo data={demos.usage} />
+
+## Message bubble
+
+Use the configurator to switch **user** vs **assistant** alignment and bubble colors.
+
+<Demo data={demos.configurator} />
+
+## Notes
+
+- **Enter** sends a message; **Shift+Enter** inserts a newline.
+- **ChatInput** includes an emoji grid (popover) and file attachments (`onFilesChange`, optional `accept` / `multipleFiles`). Set `withEmojiPicker={false}` or `withFileUpload={false}` to hide either control. Export **`CHAT_EMOJIS`** (or pass **`emojiList`**) to customize the picker. Use **`replyingTo`** + **`onCancelReply`** to show a reply preview above the field.
+- **ChatMessage** supports **`replyTo`** (quoted parent), **`reactions`** + **`onReaction`** (chips and + picker), **`onReply`**, and optional **`messageId`** (`data-message-id`).
+- Style any part via the **Styles API** tab using `classNames`, `styles`, or CSS variables on each component.

@@ -1,0 +1,184 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--mantine-spacing-xs);
+}
+
+.root[data-sender='user'] {
+  align-items: flex-end;
+}
+
+.root[data-sender='assistant'] {
+  align-items: flex-start;
+}
+
+.replyQuote {
+  box-sizing: border-box;
+  max-width: min(100%, 32rem);
+  width: fit-content;
+  min-width: 0;
+  padding-left: var(--mantine-spacing-sm);
+  border-left: 2px solid var(--mantine-color-blue-filled);
+}
+
+.replyQuoteLabel {
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-dimmed);
+}
+
+.replyQuotePreview {
+  font-size: var(--mantine-font-size-xs);
+  color: var(--mantine-color-dimmed);
+  line-height: var(--mantine-line-height-xs);
+  overflow-wrap: anywhere;
+}
+
+/* Bubble + absolutely positioned action bar (no layout height until hover). */
+.bubbleWrap {
+  position: relative;
+  box-sizing: border-box;
+  max-width: min(100%, 32rem);
+  width: fit-content;
+  min-width: 0;
+}
+
+/*
+  Invisible hover bridge between bubble and footer so moving the cursor to the
+  action bar doesn’t leave the message and dismiss :hover (and the popover).
+*/
+.bubbleWrap::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: -2px;
+  right: -2px;
+  /* Slight overlap with bubble + strip below = continuous hover path to the footer */
+  top: 100%;
+  height: 18px;
+  margin-top: -6px;
+  pointer-events: auto;
+}
+
+.root[data-sender='user'] .bubbleWrap {
+  align-self: flex-end;
+}
+
+.root[data-sender='assistant'] .bubbleWrap {
+  align-self: flex-start;
+}
+
+.bubble {
+  box-sizing: border-box;
+  max-width: min(100%, 32rem);
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-md);
+  font-size: var(--mantine-font-size-sm);
+  line-height: var(--mantine-line-height-sm);
+  overflow-wrap: anywhere;
+}
+
+.root[data-sender='user'] .bubble {
+  background-color: var(--chat-message-user-bg);
+  color: var(--chat-message-user-color);
+}
+
+.root[data-sender='assistant'] .bubble {
+  background-color: var(--chat-message-assistant-bg);
+  color: var(--chat-message-assistant-color);
+}
+
+.footer {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  /* Overlap bubble slightly so there is no dead air between bubble and bar */
+  top: calc(100% - 4px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 5px 4px 1px;
+  line-height: 1;
+  border-radius: var(--mantine-radius-sm);
+  background-color: var(--mantine-color-body);
+  box-shadow: var(--mantine-shadow-xs);
+  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 80ms ease,
+    visibility 80ms ease;
+}
+
+.root:hover .footer,
+.root:focus-within .footer,
+.root[data-footer-open='true'] .footer {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Touch / no hover: keep actions usable without hover. */
+@media (hover: none) {
+  .bubbleWrap::after {
+    display: none;
+  }
+
+  .footer {
+    position: static;
+    margin-top: 4px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: none;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+.reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  padding: 0 4px;
+  min-height: 1.125rem;
+  border-radius: var(--mantine-radius-xl);
+  font-size: calc(0.6875rem * var(--mantine-scale));
+  line-height: 1;
+  border: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--mantine-color-text);
+}
+
+.reaction[data-reacted='true'] {
+  background-color: light-dark(var(--mantine-color-blue-0), var(--mantine-color-dark-5));
+  border-color: var(--mantine-color-blue-filled);
+}
+
+.reactionCount {
+  font-variant-numeric: tabular-nums;
+  font-size: calc(0.625rem * var(--mantine-scale));
+  opacity: 0.85;
+}
+
+.reactionAdd {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  min-width: 1.25rem;
+}
+
+.replyAction {
+  flex-shrink: 0;
+  --button-height: 1.25rem;
+  min-height: 1.25rem;
+  height: 1.25rem;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-size: calc(0.6875rem * var(--mantine-scale));
+}
