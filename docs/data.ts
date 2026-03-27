@@ -14,6 +14,9 @@ export interface PackageData {
   /** Link to the license file */
   licenseUrl?: string;
 
+  /** Public documentation site (e.g. GitHub Pages), used for meta tags and npm homepage */
+  documentationUrl: string;
+
   /** Information about the author of the package */
   author: {
     /** Package author name, for example, `John Doe` */
@@ -31,6 +34,7 @@ export const PACKAGE_DATA: PackageData = {
   mdxFileUrl: 'https://github.com/pradip-v2/mantine-chat-components/blob/master/docs/docs.mdx',
   repositoryUrl: 'https://github.com/pradip-v2/mantine-chat-components',
   licenseUrl: 'https://github.com/pradip-v2/mantine-chat-components/blob/master/LICENSE',
+  documentationUrl: 'https://pradip-v2.github.io/mantine-chat-components',
   author: {
     name: 'Pradip Bankar',
     githubUsername: 'pradip-v2',

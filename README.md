@@ -2,6 +2,8 @@
 
 Chat UI primitives for React, built on [Mantine](https://mantine.dev/): **Chat** (layout), **ChatMessages** (scrollable list), **ChatMessage** (user/assistant bubbles), and **ChatInput** (composer with send).
 
+**Documentation:** [pradip-v2.github.io/mantine-chat-components](https://pradip-v2.github.io/mantine-chat-components)
+
 ## Install
 
 ```bash

@@ -2,7 +2,7 @@
   "name": "mantine-chat-components",
   "version": "0.2.2",
   "description": "Chat UI components built on Mantine",
-  "homepage": "https://github.com/pradip-v2/mantine-chat-components#readme",
+  "homepage": "https://pradip-v2.github.io/mantine-chat-components",
   "packageManager": "yarn@4.0.1",
   "license": "MIT",
   "author": "pradip-v2 <pradipbankar0097@gmail.com>",
